@@ -1,4 +1,4 @@
-class World{
+class World {
     character = new Character();
     enemies = [
         new PufferFish(),
@@ -9,32 +9,48 @@ class World{
     clouds = [
         new Cloud()
     ];
-    canvas;
-    ctx;
 
-    constructor(canvas){
+    backgroundObject = [
+        new BackgroundObject('img/3. Background/Layers/5. Water/L1.png', 0, 0),
+        new BackgroundObject('img/3. Background/Legacy/Layers/4.Fondo 2/D1.png', 0, 0),
+        new BackgroundObject('img/3. Background/Legacy/Layers/4.Fondo 2/L2.png', 0, 0),
+        new BackgroundObject('img/3. Background/Layers/2. Floor/L.png', 0, 0),
+
+    ]
+
+    canvas;
+    ctx; // == Context
+
+    constructor(canvas) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.draw();
     }
 
-    draw(){
+    draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.ctx.drawImage(this.character.img,this.character.x,this.character.y, this.character.widht, this.character.height);
-        this.enemies.forEach(enemy =>{
-            this.ctx.drawImage(enemy.img, enemy.x, enemy.y,enemy.widht, enemy.height);
-        });
+        this.addObjectsToMap(this.backgroundObject);
+        this.addObjectsToMap(this.clouds);
+        this.addObjectsToMap(this.enemies);
+        this.addToMap(this.character);
 
-
-        this.clouds.forEach(cloud =>{
-            this.ctx.drawImage(cloud.img, cloud.x, cloud.y,cloud.widht, cloud.height);
-        });
 
         // Draw() wird immer wieder aufgerufen
-        let self=this;
-        requestAnimationFrame(function(){
+        let self = this;
+        requestAnimationFrame(function () {
             self.draw();
         });
+    }
+
+
+    addObjectsToMap(objects) {
+        objects.forEach(o => {
+            this.addToMap(o);
+        });
+    }
+
+    addToMap(mo) {
+        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.widht, mo.height);
     }
 }
