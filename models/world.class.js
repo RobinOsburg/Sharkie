@@ -1,39 +1,44 @@
 class World {
     character = new Character();
-    enemies = [
-        new PufferFish(),
-        new PufferFish(),
-        new PufferFish(),
-    ];
-
-    clouds = [
-        new Cloud()
-    ];
-
-    backgroundObject = [
-        new BackgroundObject('img/3. Background/Layers/5. Water/L1.png', 0, 0),
-        new BackgroundObject('img/3. Background/Legacy/Layers/4.Fondo 2/D1.png', 0, 0),
-        new BackgroundObject('img/3. Background/Legacy/Layers/4.Fondo 2/L2.png', 0, 0),
-        new BackgroundObject('img/3. Background/Layers/2. Floor/L.png', 0, 0),
-
-    ]
-
+    level = level1;
     canvas;
-    ctx; // == Context
+    ctx;
+    keyboard;
+    camera_x = 0;
 
-    constructor(canvas) {
+    constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
+        this.keyboard = keyboard;
         this.draw();
+        this.setWorld();
+        this.checkCollisions();
+    }
+
+    setWorld() {
+        this.character.world = this;
+    }
+
+    checkCollisions(){
+        setInterval(() => {
+            this.level.enemies.forEach((enemy) => {
+              if(this.character.isColliding(enemy) ) {
+                this.character.hit();
+                console.log('Collision with Character, energie', this.character.energy)
+              }  
+            });
+        }, 1000);
     }
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        this.addObjectsToMap(this.backgroundObject);
-        this.addObjectsToMap(this.clouds);
-        this.addObjectsToMap(this.enemies);
+        this.ctx.translate(this.camera_x, 0);
+        this.addObjectsToMap(this.level.backgroundObjects);
+        this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
+
+        this.ctx.translate(-this.camera_x, 0)
 
 
         // Draw() wird immer wieder aufgerufen
@@ -51,6 +56,26 @@ class World {
     }
 
     addToMap(mo) {
-        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.widht, mo.height);
+        if (mo.otherDirection) {
+            this.flipImage(mo);
+        }
+        mo.draw(this.ctx);
+        mo.drawFrame(this.ctx);
+
+        if (mo.otherDirection) {
+            this.flipImageBack(mo);
+        }
+    }
+
+    flipImage(mo) {
+        this.ctx.save();
+        this.ctx.translate(mo.widht, 0);
+        this.ctx.scale(-1, 1);
+        mo.x = mo.x * -1;
+    }
+
+    flipImageBack(mo) {
+        mo.x = mo.x * -1;
+        this.ctx.restore();
     }
 }

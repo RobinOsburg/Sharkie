@@ -17,19 +17,15 @@ class PufferFish extends MovableObject {
         this.widht = 50;
         this.animate();
         this.speed = 0.2 + Math.random() * 0.2;
-
     }
 
     animate() {
+        setInterval(() =>{
+            this.moveLeft();
+        }, 1000/60);
 
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_WALKING.length;
-            let path = this.IMAGES_WALKING[i];
-            this.img = this.imageChahe[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_WALKING);
         }, 250);
-
-        this.moveLeft();
-
     }
 }
