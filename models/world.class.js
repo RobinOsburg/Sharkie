@@ -6,6 +6,7 @@ class World {
     keyboard;
     camera_x = 0;
     statusBar = new StatusBar();
+    coinBar = new CoinBar();
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -20,14 +21,14 @@ class World {
         this.character.world = this;
     }
 
-    checkCollisions(){
+    checkCollisions() {
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
-              if(this.character.isColliding(enemy) ) {
-                this.character.hit();
-                console.log('Collision with Character, energie', this.character.energy)
-                this.statusBar.setPercantage(this.character.energy)
-              }  
+                if (this.character.isColliding(enemy)) {
+                    this.character.hit();
+                    console.log('Collision with Character, energie', this.character.energy)
+                    this.statusBar.setPercantage(this.character.energy)
+                }
             });
         }, 1000);
     }
@@ -38,21 +39,23 @@ class World {
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.backgroundObjects);
 
+    
 
-
-        this.ctx.translate(-this.camera_x, 0); 
+        this.ctx.translate(-this.camera_x, 0);
         //-------Space for fixed objects--------
         this.addToMap(this.statusBar);
         this.ctx.translate(this.camera_x, 0);
 
+        this.ctx.translate(-this.camera_x, 0);
+        //-------Space for fixed objects--------
+        this.addToMap(this.coinBar);
+        this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
-       
 
         this.ctx.translate(-this.camera_x, 0)
-
 
         // Draw() wird immer wieder aufgerufen
         let self = this;

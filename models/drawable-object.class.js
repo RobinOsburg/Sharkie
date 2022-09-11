@@ -14,8 +14,9 @@ class DrawableObject {
     }
 
     draw(ctx) {
+        
         ctx.drawImage(this.img, this.x, this.y, this.widht, this.height);
-    }
+}
 
     loadImages(arr) {
         arr.forEach((path) => {
@@ -26,7 +27,7 @@ class DrawableObject {
     }
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof PufferFish || this instanceof Endboss) {
+        if (this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof Coins || this instanceof Endboss) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';
