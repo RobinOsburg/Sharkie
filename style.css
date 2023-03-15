@@ -1,9 +1,536 @@
-body{
+body {
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url('img/Background-cartoon.jpg');
+    background-size: cover;
+    height: 100vh;
 }
 
-canvas{
-    background-color: black;
+
+h1 {
+    font-size: 60px;
+    text-shadow: -1px -1px #9df, 1px 1px #49d, -3px 0 4px #000;
+    font-family: "Segoe print", Arial, Helvetica, sans-serif;
+    color: #531A82;
+    font-weight: bolder;
+    text-align: center;
+    display: inline;
+}
+
+canvas {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+
+.startScreen span {
+    font-size: 30px;
+    text-shadow: -1px -1px #9df, 1px 1px #49d, -3px 0 4px #000;
+    font-family: "Segoe print", Arial, Helvetica, sans-serif;
+    color: #531A82;
+    font-weight: bolder;
+    text-align: center;
+    display: inline;
+}
+
+.Instructions {
+    height: 30vh;
+    width: 30vw;
+}
+
+
+.d-none {
+    display: none;
+}
+
+
+.endScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 100px;
+}
+
+#fullscreen img {
+    height: 24px;
+    width: 24px;
+}
+
+.fullScrennText {
+    font-size: 20px;
+    text-shadow: -1px -1px #9df, 1px 1px #49d, -3px 0 4px #000;
+    font-family: "Segoe print", Arial, Helvetica, sans-serif;
+    color: #531A82;
+    font-weight: bolder;
+    text-align: center;
+    display: inline;
+}
+
+.fullScrennText:hover {
+    cursor: pointer;
+}
+
+
+.endScreen img {
+    width: 800px;
+}
+
+
+.tryAgainBtn {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #FCEE21;
+    border: none;
+    color: black;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+
+.winImg img {
+    height: 50vh;
+    width: 40vw;
+}
+
+
+.iconPosition {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    position: absolute;
+    top: 2vh;
+    left: 89vw;
+    cursor: pointer;
+}
+
+.iconPosition img {
+    height: 40px;
+}
+
+
+.startScreen {
+    height: 480px;
+    width: 720px;
+    background-color: #84a3c2bb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.introImg {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}
+
+
+.introText {
+    font-size: x-large;
+    color: white;
+    margin: 10px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+
+.gameInstructions {
+    height: 50px;
+    width: 150px;
+    object-fit: contain;
+}
+
+
+.startGameBtn {
+    width: 150px;
+    height: 50px;
+    margin-left: -45px;
+    border-radius: 5px;
+    background-color: #7FFFE0;
+    color: #531A82;
+    font-size: 15px;
+    font-weight: 900;
+    border: white;
+    margin-bottom: 15px;
+}
+
+
+.startGameBtn:hover {
+    cursor: pointer;
+}
+
+
+.canvasContainer {
+    height: 480px;
+    width: 720px;
+}
+
+.fullscreenContainer {
+    display: flex;
+}
+
+.HUD {
+    width: 720px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#left {
+    height: 35px;
+    width: 35px;
+    border-radius: 30px;
+    margin: 10px;
+    background-color: #7FFFE0;
+    color: #531A82;
+}
+
+#right {
+    height: 35px;
+    width: 35px;
+    border-radius: 30px;
+    margin: 10px;
+    background-color: #7FFFE0;
+    color: #531A82;
+}
+
+#up {
+    height: 35px;
+    width: 35px;
+    border-radius: 30px;
+    margin: 10px;
+    background-color: #7FFFE0;
+    color: #531A82;
+}
+
+#down {
+    height: 35px;
+    width: 35px;
+    border-radius: 30px;
+    margin: 10px;
+    background-color: #7FFFE0;
+    color: #531A82;
+}
+
+#space {
+    height: 35px;
+    width: 100px;
+    border-radius: 30px;
+    margin: 10px;
+    background-color: #7FFFE0;
+    color: #531A82;
+}
+
+
+
+
+
+
+
+
+
+/* MEDIA SECTION  */
+
+
+@media(max-width:1250px) {
+
+    .winImg img {
+        height: 50vh;
+        width: 50vw;
+    }
+}
+
+@media(max-width:1000px) {
+
+    .winImg img {
+        height: 40vh;
+        width: 50vw;
+    }
+
+    .endScreen img {
+        margin-top: 50px;
+        width: 555px;
+    }
+
+    .tryAgainBtn {
+        padding: 10px;
+        width: 155px;
+    }
+}
+
+
+@media only screen and (max-width:720px) {
+    canvas {
+        width: 100%;
+    }
+
+    .startScreen {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-height:670px) {
+
+
+    canvas {
+        height: 100vh;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    .iconPosition img {
+        height: 25px;
+    }
+    
+
+    .btnLeftRight {
+        position: absolute;
+        top: 84vh;
+        left: 0vw;
+        gap: unset;
+    }
+
+    #left {
+        margin: 5px;
+        height: 45px;
+        width: 45px
+    }
+
+    #right {
+        margin: 5px;
+        height: 45px;
+        width: 45px
+    }
+
+    .btnUpDown {
+        position: absolute;
+        top: 84vh;
+        left: 84vw;
+    }
+
+    #up {
+        margin: 5px;
+        height: 45px;
+        width: 45px
+    }
+
+    #down {
+        margin: 5px;
+        height: 45px;
+        width: 45px
+    }
+
+    .btnSpace {
+        position: absolute;
+        top: 68vh;
+        left: 84vw;
+    }
+
+    #space {
+        width: 80px;
+        height: 45px;
+    }
+
+
+    .startScreen {
+        height: 100vh;
+    }
+
+    .winImg img {
+        height: 60vh;
+        width: 50vw;
+    }
+
+    .endScreen {
+        gap: 50px;
+    }
+}
+
+
+
+
+
+@media (max-width:730px) {
+
+    .HUD {
+        width: 600px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    /* canvas {
+        width: 600px;
+        height: 400px;
+        margin-left: 5px;
+    } */
+
+
+    .canvasContainer {
+        width: 500px;
+        margin-left: -200px;
+    }
+
+    .endScreen img {
+        width: 600px;
+    }
+
+    .winImg img {
+        height: 40vh;
+        width: 70vw;
+    }
+
+    .tryAgainBtn {
+        width: 200px;
+        height: 70px;
+    }
+
+    .startScreen {
+        width: 550px;
+        margin-left: 80px;
+    }
+
+    .btnSpace {
+        position: absolute;
+        top: 82vh;
+        left: 43vw;
+    }
+
+    .btnUpDown {
+        position: absolute;
+        top: 82vh;
+        left: 74vw;
+    }
+
+    .btnLeftRight {
+        position: absolute;
+        top: 82vh;
+        left: 10vw;
+        gap: unset;
+    }
+
+    .iconPosition {
+        left: 79vw;
+    }
+
+    .iconPosition img {
+        height: 25px;
+    }
+
+
+
+}
+
+@media (max-width:600px) {
+
+    .HUD {
+        width: 450px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    /* canvas {
+        width: 450px;
+        height: 400px;
+        margin-left: 0px;
+    } */
+
+    .canvasContainer {
+        width: 450px;
+        margin-left: -105px;
+    }
+
+    .endScreen img {
+        width: 400px;
+    }
+
+    .winImg img {
+        height: 30vh;
+        width: 60vw;
+    }
+
+    .tryAgainBtn {
+        width: 100px;
+        height: 35px;
+        font-size: 15px;
+        padding: 0;
+    }
+
+    .startScreen {
+        width: 450px;
+        margin-left: 60px;
+    }
+}
+
+
+@media (max-width:480px) {
+
+    .HUD {
+        width: 350px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .startScreen {
+        width: 350px;
+        height: 400px;
+        margin-left: 54px;
+    }
+
+    /* canvas {
+        width: 350px;
+        height: 400px;
+        margin-left: 0px;
+    } */
+
+    .canvasContainer {
+        width: 350px;
+        height: 400px;
+        margin-left: -105px;
+    }
+
+    .endScreen img {
+        width: 300px;
+    }
+
+    .winImg img {
+        height: 30vh;
+        width: 90vw;
+    }
+
+    .tryAgainBtn {
+        width: 100px;
+        height: 35px;
+        font-size: 15px;
+        padding: 0;
+    }
+
+    .btnSpace {
+        position: absolute;
+        top: 53vh;
+        left: 31vw;
+    }
+
+    .btnLeftRight {
+        position: absolute;
+        top: 53vh;
+        left: 0vw;
+        gap: unset;
+    }
+
+    .btnUpDown {
+        position: absolute;
+        top: 53vh;
+        left: 70vw;
+    }
 }

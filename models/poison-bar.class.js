@@ -1,23 +1,23 @@
-class CoinBar extends DrawableObject {
+class PoisonBar extends DrawableObject {
 
     IMAGES = [
-        'img/4. Marcadores/green/Coin/100_ copia 4.png',
-        'img/4. Marcadores/green/Coin/80_  copia 4.png',
-        'img/4. Marcadores/green/Coin/60_  copia 4.png',
-        'img/4. Marcadores/green/Coin/40_  copia 4.png',
-        'img/4. Marcadores/green/Coin/20_  copia 2.png',
-        'img/4. Marcadores/green/Coin/0_  copia 4.png'
+        'img/4. Marcadores/orange/100_ copia.png',
+        'img/4. Marcadores/orange/80_ copia.png',
+        'img/4. Marcadores/orange/60_ copia.png',
+        'img/4. Marcadores/orange/40_ copia.png',
+        'img/4. Marcadores/orange/20_ copia.png',
+        'img/4. Marcadores/orange/0_ copia.png'
     ];
 
-    widht= 140;
     height= 50;
+    widht= 140;
     percentage = 0;
 
     constructor() {
         super();
         this.loadImages(this.IMAGES);
-        this.x = 1;
-        this.y = 40;
+        this.x = 180;
+        this.y =  40;
         this.setPercantage(0);
     };
 

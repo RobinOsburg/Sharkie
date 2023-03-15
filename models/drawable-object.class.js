@@ -11,12 +11,12 @@ class DrawableObject {
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
-    }
+    };
 
     draw(ctx) {
-        
         ctx.drawImage(this.img, this.x, this.y, this.widht, this.height);
-}
+    };
+
 
     loadImages(arr) {
         arr.forEach((path) => {
@@ -24,15 +24,16 @@ class DrawableObject {
             img.src = path;
             this.imageCache[path] = img;
         });
-    }
+    };
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof Coins || this instanceof Endboss) {
+        if (this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof Coins || this instanceof Poison || this instanceof Endboss) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y, this.widht, this.height);
+            // ctx.rect(this.x ,this.y, this.widht, this.height);
             ctx.stroke();
         }
-    }
+    };
+
 }

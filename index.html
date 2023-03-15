@@ -5,35 +5,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/1.Sharkie/1.IDLE/1.png">
     <link rel="stylesheet" href="style.css">
     <script src="models/drawable-object.class.js"></script>
     <script src="models/movable-objects.class.js"></script>
-    <script src="models/coins.class.js"></script>
     <script src="models/character.class.js"></script>
     <script src="models/pufferFish.class.js"></script>
     <script src="models/jellyfish.class.js"></script>
-    
     <script src="models/cloud.class.js"></script>
+    <script src="models/coins.class.js"></script>
+    <script src="models/poison.class.js"></script>
     <script src="models/world.class.js"></script>
     <script src="models/status-bar.class.js"></script>
+    <script src="models/endboss_bar.class.js"></script>
     <script src="models/coin_bar.class.js"></script>
+    <script src="models/poison-bar.class.js"></script>
     <script src="models/background-object.class.js"></script>
     <script src="models/keyboard.class.js"></script>
     <script src="models/level.class.js"></script>
+    <script src="models/throwable-object.class.js"></script>
     <script src="models/endboss.class.js"></script>
     <script src="levels/level1.js"></script>
     <script src="js/game.js"></script>
     <title>Sharkie</title>
-
-
 </head>
 
 
 <body onload="init()">
 
-    <h1>Sharkie</h1>
 
-    <canvas id="canvas" width="720" height="480"></canvas>
+    <h1>Sharkie</h1>
+    <div id="endScreen" class="endScreen"> </div>
+    <div id="fullscreenContainer" class="fullscreenContainer">
+        <canvas class="d-none canvas" id="canvas" width="720" height="480"></canvas>
+    </div>
+
+    
+
+    <div id="canvasContainer" class="canvasContainer"></div>
+    <div class="d-none" id="hud">
+        <div class="btnLeftRight">
+            <button id="left">L</button><button id="right">R</button>
+        </div>
+        <div class="btnSpace">
+            <button id="space">Space</button>
+        </div>
+        <div class="btnUpDown">
+            <button id="up">Up</button><button id="down">Dn</button>
+        </div>
+    </div>
+    
+
+    <div class="d-none" id="sound">
+        <div onclick="soundOff()">
+            <img src="img/soundOff.ico">
+        </div>
+        <div onclick="soundOn()">
+            <img src="img/soundOn.ico">
+        </div>
+    </div>
 
 
 
