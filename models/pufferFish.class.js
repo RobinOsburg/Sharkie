@@ -45,7 +45,7 @@ class PufferFish extends MovableObject {
         this.widht = 60;
         this.animate();
         this.checkPufferHit();
-        this.PufferIsKilledByCharacter();
+        // this.PufferIsKilledByCharacter();
         this.speed = 0.2 + Math.random() * 0.2;
     }
 
@@ -63,39 +63,46 @@ class PufferFish extends MovableObject {
 
  //--------------------------------------------------------
     
-    animate() {
-        setStoppableInterval(() => {
-            this.moveLeft();
-        }, 1000 / 60);
-        let i = 0;
-        setStoppableInterval(() => {
-            this.playAnimation(this.IMAGES_WALKING); 
-             if (i < 5) {
-                    this.playAnimation(this.IMAGES_TRANSITION);                    
-                } else {
-                    this.playAnimation(this.IMAGES_BUBBLESWIM);
-
-                i++;
-            }    
-        }, 800); 
-       
-    }
-
-    checkPufferHit(){
-        setInterval(() => {
-            if (this.isHurt()){
-                this.PufferIsKilledByCharacter();
-            }
-        }, 150); 
-    }
+ animate() {
+    let i = 0;
+    this.intervalId = setStoppableInterval(() => {
+      this.moveLeft();
+    }, 1000 / 60);
     
-    
-    PufferIsKilledByCharacter() {
-        this.speed = 0;
-        this.y -= 15;
+    this.animationId = setStoppableInterval(() => {
+      if (this.isHurt()) {
+        clearInterval(this.intervalId);
+        clearInterval(this.animationId);
         this.playAnimation(this.IMAGES_DEAD);
-    }
+      } else {
+        if (i < 5) {
+          this.playAnimation(this.IMAGES_TRANSITION);
+        } else {
+          this.playAnimation(this.IMAGES_BUBBLESWIM);
+        }
 
- //--------------------------------------------------------
+        i++;
+        if (i > 9) {
+          i = 0;
+          this.playAnimation(this.IMAGES_WALKING);
+        }
+      }
+    }, 200);
+  }
+  
+  checkPufferHit() {
+    setInterval(() => {
+      if (this.isHurt()) {
+        this.speed = 0;
+        const moveUpInterval = setInterval(() => {
+          this.y -= 5; // move up by 5 pixels per interval
+          if (this.y < -100) {
+            clearInterval(moveUpInterval); // stop the interval when the image is out of the canvas
+          }
+        }, 50);
+      }
+    }, 150); 
+  }
+
 
 }

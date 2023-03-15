@@ -1,7 +1,6 @@
 class World {
     character = new Character();
     endboss = new Endboss();
-    enemy = new PufferFish();
     level = level1;
     canvas;
     ctx;
@@ -47,6 +46,7 @@ class World {
             this.checkPoisonCollisions();
             this.checkBubbleCollisions();
             this.attackPuffer();
+            this.bubbleHitPufferfish();
 
         }, 200);
     };
@@ -95,6 +95,23 @@ class World {
         });
         this.checkBossCollisions();
     };
+
+
+
+
+
+
+    bubbleHitPufferfish() {
+        this.throwableObjects.forEach((bubble, i) => {
+          this.level.enemies.forEach((enemy) => {
+            if ( enemy.isColliding(bubble)) {
+              enemy.pufferHit();
+              this.throwableObjects.splice(i, 1)
+              
+            }
+          });
+        });
+      }
 
 
 
@@ -161,18 +178,10 @@ class World {
     };
 
 
-  //--------------------------------------------------------   
-    checkPufferBubbleCollision() {
-        this.throwableObjects.forEach((bubble, i) => {
-            if (this.enemy.isColliding(bubble)) {
-                this.enemy.pufferHit();
-                this.throwableObjects.splice(i, 1)
-                this.PufferFish.checkPufferHit();
-            }
-        });
-    }
+    //--------------------------------------------------------   
 
- //--------------------------------------------------------
+
+    //--------------------------------------------------------
 
     renderGameOver() {
         return /*html*/`
