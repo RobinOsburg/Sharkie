@@ -98,10 +98,6 @@ class World {
     };
 
 
-
-
-
-
     bubbleHitPufferfish() {
         this.throwableObjects.forEach((bubble, i) => {
           this.level.enemies.forEach((enemy) => {
@@ -111,16 +107,14 @@ class World {
             }
           });
         });
-      }
-
+      };
 
 
     replaceCanvas() {
         document.getElementById('hud').classList.remove('HUD');
         document.getElementById('hud').classList.add('d-none');
         document.getElementById('canvas').classList.add('d-none');
-    }
-
+    };
 
 
     checkBossCollisions() {
@@ -137,8 +131,6 @@ class World {
             win_sound.play();
         }
     };
-
-
 
 
     // checkCoinCollisions() {
@@ -228,7 +220,7 @@ class World {
         this.addObjectsToMap(this.throwableObjects);
         this.addToMap(this.character);
         this.addToMap(this.endboss);
-    }
+    };
 
 
     drawBars() {
@@ -238,7 +230,7 @@ class World {
         this.addToMap(this.poisonBar);
         this.addToMap(this.endbossBar);
         this.ctx.translate(this.camera_x, 0);
-    }
+    };
 
 
     addObjectsToMap(objects) {

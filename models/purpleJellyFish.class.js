@@ -69,5 +69,5 @@ class purpleJellyFish extends MovableObject {
                 }, 50);
             }
         }, 150);
-    }
+    };
 }

@@ -69,7 +69,7 @@ class JellyFish extends MovableObject {
                 }, 50);
             }
         }, 150);
-    }
+    };
 
 
 

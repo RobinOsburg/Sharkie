@@ -89,9 +89,9 @@ class Endboss extends MovableObject {
 
                 this.playAnimation(this.IMAGES_START)
                 this.imgCounter++
-                // bossFight_sound.volume= 0.2;
-                // bossFight_sound.play();
-                // backgroundSound.pause();
+                bossFight_sound.volume= 0.2;
+                bossFight_sound.play();
+                backgroundSound.pause();
             }
             if (this.imgCounter == 10) {
                 this.hadFirstContact = true;
@@ -103,16 +103,13 @@ class Endboss extends MovableObject {
 
 
     attack() {
-
         console.log('attackWorks')
         setInterval(() => {
             if (this.hadFirstContact == true) {
                 this.moveLeft();
             }
-
         }, 1000 / 250);
-
-    }
+    };
 
 
     swimAnimate() {
@@ -121,7 +118,7 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.IMAGES_WALKING);
             }
         }, 150);
-    }
+    };
 
     checkBossHit() {
         setInterval(() => {
@@ -129,51 +126,18 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.IMAGES_BOSSHIT);
             }
         }, 150);
-    }
+    };
 
 
-
-    // leavBossZone(){
-    //     setInterval(() => {
-    //         if (world.character.x < 2600) {
-    //            bossFight_sound.pause();
-    //            backgroundSound.play();
-    //         }
-    //         if (world.character.x >2600 && !this.bossDead() && !world.character.isDead()) {
-    //             bossFight_sound.volume= 0.2;
-    //             bossFight_sound.play()
-    //         } 
-    //     }, 150);
-    // }
 
     checkDeath() {
         setInterval(() => {
             if (this.bossDead() || world.character.isDead()) {
                 this.playAnimation(this.IMAGES_DEADBOSS);
-                // bossFight_sound.pause();
+                bossFight_sound.pause();
             }
         }, 150);
     };
 
-    // attack() {
-    //     setInterval(() => {
-    //         if (this.otherDirection) {
-    //             this.moveRight();
-    //         } else {
-    //             this.moveLeft();
-    //         }
-    //     }, 1000 / 250);
-    // };
-
-
-    ;
-
-
-
-    // reverse() {
-    //     setInterval(() => {
-    //         this.otherDirection = !this.otherDirection;
-    //     }, 5000);
-    // };
-
+  
 }

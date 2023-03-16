@@ -78,8 +78,8 @@ class Character extends MovableObject {
     world;
     currentImage = 0;
     firstAttack = false;
-   
-  
+
+
 
 
     constructor() {
@@ -91,7 +91,7 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_FINSLAP);
         this.animateMovement();
         this.animateImg();
-    }
+    };
 
 
 
@@ -147,29 +147,31 @@ class Character extends MovableObject {
 
             }
             this.world.camera_x = -this.x + 100;
-        }, 1000 / 60); 
+        }, 1000 / 60);
     };
 
 
-animateImg(){
-    setInterval(() => {
-        if (this.isDead()) {
-            this.playAnimation(this.IMAGES_DEAD);
+    animateImg() {
+        setInterval(() => {
+            if (this.isDead()) {
+                this.playAnimation(this.IMAGES_DEAD);
 
-        } else if (this.isHurt()) {
-            this.playAnimation(this.IMAGES_HURT);
-        }
-        else if (this.world.keyboard.right || this.world.keyboard.left) {
-            this.playAnimation(this.IMAGES_WALKING);
-        }
-        else if (this.world.keyboard.f || this.world.keyboard.f) {
-            this.playAnimation(this.IMAGES_FINSLAP);
-        }
-        else {
-            this.playAnimation(this.IMAGES_IDLE);
-        }
-    }, 150);
-};
+            } else if (this.isHurt()) {
+                this.playAnimation(this.IMAGES_HURT);
+                sharkie_hit.play();
+                sharkie_hit.volume = 0.2;
+            }
+            else if (this.world.keyboard.right || this.world.keyboard.left) {
+                this.playAnimation(this.IMAGES_WALKING);
+            }
+            else if (this.world.keyboard.f || this.world.keyboard.f) {
+                this.playAnimation(this.IMAGES_FINSLAP);
+            }
+            else {
+                this.playAnimation(this.IMAGES_IDLE);
+            }
+        }, 150);
+    };
 
 
 }
