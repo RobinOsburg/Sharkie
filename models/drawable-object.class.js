@@ -27,7 +27,7 @@ class DrawableObject {
     };
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof Coins || this instanceof Poison || this instanceof Endboss) {
+        if (this instanceof Character || this instanceof PufferFish || this instanceof JellyFish || this instanceof purpleJellyFish ||  this instanceof Poison || this instanceof Endboss) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';

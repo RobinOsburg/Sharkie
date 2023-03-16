@@ -98,15 +98,7 @@ function mobileHud() {
         keyboard.down = false
     })
 
-    // document.getElementById("f").addEventListener("touchstart", (e) => {
-    //     e.preventDefault()
-    //     keyboard.f = true
-    // })
 
-    // document.getElementById("f").addEventListener("touchend", (e) => {
-    //     e.preventDefault()
-    //     keyboard.f = false
-    // })
 }
 
 
@@ -126,9 +118,7 @@ window.addEventListener('keydown', (e) => {
     if (e.keyCode == 32) {
         keyboard.space = true;
     }
-    // if (e.keyCode == 70) {
-    //     keyboard.f = true;
-    // }
+   
 
 });
 
@@ -149,9 +139,7 @@ window.addEventListener('keyup', (e) => {
     if (e.keyCode == 32) {
         keyboard.space = false;
     }
-    // if (e.keyCode == 70) {
-    //     keyboard.f = false;
-    // }
+  
 
 });
 

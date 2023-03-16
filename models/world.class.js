@@ -7,7 +7,7 @@ class World {
     keyboard;
     camera_x = 0;
     statusBar = new StatusBar();
-    coinBar = new CoinBar();
+    // coinBar = new CoinBar();
     poisonBar = new PoisonBar();
     endbossBar = new Endbossbar();
     throwableObjects = [];
@@ -22,7 +22,7 @@ class World {
         this.setWorld();
         this.swim();
         this.checkThrowObjects();
-        this.checkCoinCollisions();
+        // this.checkCoinCollisions();
         this.checkPoisonCollisions();
         this.checkBubbleCollisions();
         this.checkBossCollisions();
@@ -42,7 +42,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
-            this.checkCoinCollisions();
+            // this.checkCoinCollisions();
             this.checkPoisonCollisions();
             this.checkBubbleCollisions();
             this.attackPuffer();
@@ -54,7 +54,7 @@ class World {
 
 
     checkThrowObjects() {
-        if (this.keyboard.space && this.character.poisonEnergy >= 10 && this.endboss.hadFirstContact == true && !this.character.otherDirection) {
+        if (this.keyboard.space && this.character.poisonEnergy >= 10 && this.endboss.hadFirstContact == true ) {
             let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 100);
             this.throwableObjects.push(bubble);
             this.character.cashPoison();
@@ -73,6 +73,7 @@ class World {
             bubble_sound.play();
         }
     };
+
 
 
     checkCollisions() {
@@ -107,7 +108,6 @@ class World {
             if ( enemy.isColliding(bubble)) {
               enemy.pufferHit();
               this.throwableObjects.splice(i, 1)
-              
             }
           });
         });
@@ -141,17 +141,18 @@ class World {
 
 
 
-    checkCoinCollisions() {
-        this.level.coins.forEach((coin, index) => {
-            if (this.character.isColliding(coin)) {
-                this.character.collectCoin();
-                this.level.coins.splice(index, 1);
-                this.coinBar.setPercantage(this.character.coinEnergy);
-                coin_sound.volume = 0.2;
-                coin_sound.play()
-            }
-        });
-    };
+    // checkCoinCollisions() {
+    //     this.level.coins.forEach((coin, index) => {
+    //         if (this.character.isColliding(coin)) {
+    //             this.character.collectCoin();
+    //             this.level.coins.splice(index, 1);
+    //             this.coinBar.setPercantage(this.character.coinEnergy);
+    //             coin_sound.volume = 0.2;
+    //             coin_sound.play()
+    //         }
+    //     });
+    // };
+
 
     checkPoisonCollisions() {
         this.level.poison.forEach((poison, index) => {
@@ -166,9 +167,10 @@ class World {
         });
     };
 
+
     checkBubbleCollisions() {
         this.throwableObjects.forEach((bubble, i) => {
-            if (this.endboss.isColliding(bubble) && world.character.x > 1490) {
+            if (this.endboss.isColliding(bubble)) {
                 this.endboss.bossHit();
                 this.throwableObjects.splice(i, 1)
                 this.endbossBar.setPercantage(this.endboss.bossEnergy);
@@ -177,11 +179,6 @@ class World {
         });
     };
 
-
-    //--------------------------------------------------------   
-
-
-    //--------------------------------------------------------
 
     renderGameOver() {
         return /*html*/`
@@ -195,6 +192,7 @@ class World {
         `
     };
 
+
     renderWonGame() {
         return  /*html*/`
         <div class = "winImg">
@@ -206,8 +204,6 @@ class World {
         </div>
         `
     };
-
-
 
 
     draw() {
@@ -226,7 +222,7 @@ class World {
 
     allObjects() {
         this.addObjectsToMap(this.level.clouds);
-        this.addObjectsToMap(this.level.coins);
+        // this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.poison);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);
@@ -234,14 +230,16 @@ class World {
         this.addToMap(this.endboss);
     }
 
+
     drawBars() {
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.statusBar);
-        this.addToMap(this.coinBar);
+        // this.addToMap(this.coinBar);
         this.addToMap(this.poisonBar);
         this.addToMap(this.endbossBar);
         this.ctx.translate(this.camera_x, 0);
     }
+
 
     addObjectsToMap(objects) {
         objects.forEach(o => {
@@ -262,6 +260,7 @@ class World {
         }
     };
 
+
     flipImage(mo) {
         this.ctx.save();
         this.ctx.translate(mo.widht, 0);
@@ -269,13 +268,14 @@ class World {
         mo.x = mo.x * -1;
     };
 
+
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();
     };
 
 
-
+    
     // GameOver
 
     cancelAllId() {

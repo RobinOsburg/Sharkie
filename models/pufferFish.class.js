@@ -39,29 +39,16 @@ class PufferFish extends MovableObject {
         this.loadImages(this.IMAGES_TRANSITION);
         this.loadImages(this.IMAGES_BUBBLESWIM);
         this.loadImages(this.IMAGES_DEAD);
-        this.x = 500 + Math.random() * 500;
-        this.y = 50 + Math.random() * 400; 
+        this.x = 600 + Math.random() * 500;
+        this.y = 50 + Math.random() * 500; 
         this.height = 60;
         this.widht = 60;
         this.animate();
         this.checkPufferHit();
-        // this.PufferIsKilledByCharacter();
         this.speed = 0.2 + Math.random() * 0.2;
     }
 
-    // animate() {
-    //     setInterval(() => {
-    //         this.moveLeft();
-    //     }, 1000 / 60);
-
-    //     setInterval(() => {
-    //         this.playAnimation(this.IMAGES_WALKING);
-    //     }, 250);
-    // };
-
-
-
- //--------------------------------------------------------
+  
     
  animate() {
     let i = 0;
@@ -70,19 +57,18 @@ class PufferFish extends MovableObject {
     }, 1000 / 60);
     
     this.animationId = setStoppableInterval(() => {
-      if (this.isHurt()) {
+      if (this.pufferFishEnergy == 0) {
         clearInterval(this.intervalId);
         clearInterval(this.animationId);
-        this.playAnimation(this.IMAGES_DEAD);
+        this.loadImage('img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 3 (can animate by going down to the floor after the Fin Slap attack).png');
       } else {
         if (i < 5) {
           this.playAnimation(this.IMAGES_TRANSITION);
         } else {
           this.playAnimation(this.IMAGES_BUBBLESWIM);
         }
-
         i++;
-        if (i > 9) {
+        if (i > 9 ) {
           i = 0;
           this.playAnimation(this.IMAGES_WALKING);
         }

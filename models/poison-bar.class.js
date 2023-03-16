@@ -16,7 +16,7 @@ class PoisonBar extends DrawableObject {
     constructor() {
         super();
         this.loadImages(this.IMAGES);
-        this.x = 180;
+        this.x = 1;
         this.y =  40;
         this.setPercantage(0);
     };

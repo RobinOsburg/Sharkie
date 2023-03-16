@@ -9,6 +9,8 @@ class MovableObject extends DrawableObject {
     poisonEnergy = 0;
     bossEnergy = 100;
     pufferFishEnergy = 10;
+    jellyFishEnergy = 10;
+    purpleJellyFishEnergy = 10;
 
 
    offset = {
@@ -33,6 +35,7 @@ class MovableObject extends DrawableObject {
     moveLeft() {
         this.x -= this.speed;
     }
+    
 
     playAnimation(images) {
         let i = this.currentImage % images.length;
@@ -50,15 +53,6 @@ class MovableObject extends DrawableObject {
     }
 
 
-
-// -----------------------------------------------------------------------------------
-
-
-
-
-
-// ---------------------------------------------------------------------- ---------------  
-
     hit() {
         this.energy -= 6;
         if (this.energy < 0) {
@@ -67,6 +61,7 @@ class MovableObject extends DrawableObject {
             this.lastHit = new Date().getTime();
         }
     }
+
 
     bossHit() {
         this.bossEnergy -= 20;
@@ -78,8 +73,6 @@ class MovableObject extends DrawableObject {
     };
 
 
-    //--------------------------------------------------------
-
     pufferHit() {
         this.pufferFishEnergy -= 10;
         if (this.pufferFishEnergy < 0) {
@@ -89,7 +82,25 @@ class MovableObject extends DrawableObject {
         }
     };
 
-    //-----------------------------------------------------------
+
+    jellyHit() {
+        this.jellyFishEnergy -= 10;
+        if (this.jellyFishEnergy < 0) {
+            this.jellyFishEnergy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    };
+
+
+    purpleJellyHit() {
+        this.purpleJellyFishEnergy -= 10;
+        if (this.purpleJellyFishEnergy < 0) {
+            this.purpleJellyFishEnergy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    };
 
 
     isHurt() {
@@ -107,6 +118,7 @@ class MovableObject extends DrawableObject {
     bossDead() {
         return this.bossEnergy == 0;
     };
+
 
     collectCoin() {
         this.coinEnergy += 20;

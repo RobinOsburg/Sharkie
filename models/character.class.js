@@ -1,6 +1,6 @@
 class Character extends MovableObject {
 
-    speed = 10;
+    speed = 3;
     offset = {
         top: 105,
         bottom: 50,
@@ -78,7 +78,7 @@ class Character extends MovableObject {
     world;
     currentImage = 0;
     firstAttack = false;
-    fPressed = false;
+   
   
 
 
@@ -99,27 +99,26 @@ class Character extends MovableObject {
         return this.world.keyboard.right && this.x < this.world.level.level_end_x;
     };
 
+
     checkDirectionLeft() {
         return this.world.keyboard.left && this.x > 0;
     };
+
 
     checkDirectionUp() {
         return this.world.keyboard.up && this.y > -50;
     };
 
+
     checkDirectionDown() {
         return this.world.keyboard.down && this.y < 300;
     };
+
 
     setVolumeAndSound() {
         swimming_sound.volume = 0.2;
         swimming_sound.play()
     };
-
-   
-    
-
-   
 
 
     animateMovement() {
@@ -151,6 +150,7 @@ class Character extends MovableObject {
         }, 1000 / 60); 
     };
 
+
 animateImg(){
     setInterval(() => {
         if (this.isDead()) {
@@ -170,8 +170,6 @@ animateImg(){
         }
     }, 150);
 };
-
-
 
 
 }

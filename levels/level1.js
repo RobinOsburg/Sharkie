@@ -9,29 +9,50 @@ function initLevel() {
             new PufferFish(),
             new PufferFish(),
             new PufferFish(),
+            new PufferFish(),
+            new PufferFish(),
+            new PufferFish(),
+            new PufferFish(),
 
             new JellyFish(),
             new JellyFish(),
             new JellyFish(),
             new JellyFish(),
+            new JellyFish(),
+
+            new purpleJellyFish(),
+            new purpleJellyFish(),
+            new purpleJellyFish(),
+            new purpleJellyFish(),
+            new purpleJellyFish(),
         ],
 
         [
             new Cloud()
         ],
 
-        [
-            new Coins(),
-            new Coins(),
-            new Coins(),
-            new Coins(),
-            new Coins(),
-            new Coins(),
-            new Coins(),
-            new Coins(),
-        ],
+        // [
+        //     new Coins(),
+        //     new Coins(),
+        //     new Coins(),
+        //     new Coins(),
+        //     new Coins(),
+        //     new Coins(),
+        //     new Coins(),
+        //     new Coins(),
+        // ],
 
         [
+            new Poison(),
+            new Poison(),
+            new Poison(),
+            new Poison(),
+            new Poison(),
+            new Poison(),
+            new Poison(),
+            new Poison(),
+            new Poison(),
+            new Poison(),
             new Poison(),
             new Poison(),
             new Poison(),
@@ -72,6 +93,18 @@ function initLevel() {
             new BackgroundObject('img/3. Background/Layers/4.Fondo 2/D2.png', 719 * 3, 0),
             new BackgroundObject('img/3. Background/Layers/3.Fondo 1/D2.png', 719 * 3, 0),
             new BackgroundObject('img/3. Background/Layers/2. Floor/D2.png', 719 * 3, 0),
+
+            
+            new BackgroundObject('img/3. Background/Layers/5. Water/D1.png', 719 * 4, 0),
+            new BackgroundObject('img/3. Background/Layers/4.Fondo 2/D1.png', 719 * 4, 0),
+            new BackgroundObject('img/3. Background/Layers/3.Fondo 1/D1.png', 719 * 4, 0),
+            new BackgroundObject('img/3. Background/Layers/2. Floor/D1.png', 719 * 4, 0),
+
+
+            new BackgroundObject('img/3. Background/Layers/5. Water/D2.png', 719 * 5, 0),
+            new BackgroundObject('img/3. Background/Layers/4.Fondo 2/D2.png', 719 * 5, 0),
+            new BackgroundObject('img/3. Background/Layers/3.Fondo 1/D2.png', 719 * 5, 0),
+            new BackgroundObject('img/3. Background/Layers/2. Floor/D2.png', 719 * 5, 0),
 
         ]      
     );
