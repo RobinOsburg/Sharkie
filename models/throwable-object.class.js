@@ -6,12 +6,30 @@ class ThrowableObject extends MovableObject {
         this.y = y;
         this.height = 40;
         this.widht = 40;
+        
         this.attack();
     };
 
 
     attack() {
         this.speedX = 30;
+        if (!world.character.flipImage) {
+            this.attackRight();
+        } else{
+            this.attackLeft();  
+        }
+    };
+
+
+
+    attackLeft(){
+        setInterval(() => {
+            this.x -= 10;
+        }, 10/0.3);
+    };
+
+
+    attackRight(){
         setInterval(() => {
             this.x += 10;
         }, 10/0.3);
