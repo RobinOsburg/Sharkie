@@ -21,7 +21,7 @@ class World {
         this.draw();
         this.setWorld();
         this.swim();
-        this.checkThrowObjects();
+        // this.checkThrowObjects();
         // this.checkCoinCollisions();
         this.checkPoisonCollisions();
         this.checkBubbleCollisions();
@@ -41,7 +41,7 @@ class World {
     swim() {
         setInterval(() => {
             this.checkCollisions();
-            this.checkThrowObjects();
+            // this.checkThrowObjects();
             // this.checkCoinCollisions();
             this.checkPoisonCollisions();
             this.checkBubbleCollisions();
@@ -53,19 +53,19 @@ class World {
 
 
 
-    checkThrowObjects() {
-        if (this.keyboard.space && this.character.poisonEnergy >= 10 && this.endboss.hadFirstContact == true ) {
-            let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 100);
-            this.throwableObjects.push(bubble);
-            this.character.cashPoison();
-            this.poisonBar.setPercantage(this.character.poisonEnergy);
-            bubble_sound.play();
-        }
-    };
+    // checkThrowObjects() {
+    //     if (this.keyboard.space && this.character.poisonEnergy >= 10) {
+    //         let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 100);
+    //         this.throwableObjects.push(bubble);
+    //         this.character.cashPoison();
+    //         this.poisonBar.setPercantage(this.character.poisonEnergy);
+    //         bubble_sound.play();
+    //     }
+    // };
 
 
     attackPuffer() {
-        if (this.keyboard.space && this.character.poisonEnergy >= 10 && !this.character.otherDirection) {
+        if (this.keyboard.space && this.character.poisonEnergy >= 10) {
             let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 100);
             this.throwableObjects.push(bubble);
             this.character.cashPoison();
