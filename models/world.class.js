@@ -28,8 +28,7 @@ class World {
         this.checkBossCollisions();
         this.checkCollisions();
         this.restartGame();
-        this.attackPuffer();
-
+        this.bubbleAttack();
     };
 
 
@@ -41,11 +40,10 @@ class World {
     swim() {
         setInterval(() => {
             this.checkCollisions();
-            // this.checkThrowObjects();
             // this.checkCoinCollisions();
             this.checkPoisonCollisions();
             this.checkBubbleCollisions();
-            this.attackPuffer();
+            this.bubbleAttack();
             this.bubbleHitPufferfish();
 
         }, 200);
@@ -53,18 +51,7 @@ class World {
 
 
 
-    // checkThrowObjects() {
-    //     if (this.keyboard.space && this.character.poisonEnergy >= 10) {
-    //         let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 100);
-    //         this.throwableObjects.push(bubble);
-    //         this.character.cashPoison();
-    //         this.poisonBar.setPercantage(this.character.poisonEnergy);
-    //         bubble_sound.play();
-    //     }
-    // };
-
-
-    attackPuffer() {
+    bubbleAttack() {
         if (this.keyboard.space && this.character.poisonEnergy >= 10) {
             let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 100);
             this.throwableObjects.push(bubble);
