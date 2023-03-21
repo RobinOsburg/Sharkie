@@ -17,7 +17,7 @@ win_sound = new Audio('audio/win.mp3');
 
 function init() {
     canvasContainer = document.getElementById('canvasContainer');
-    if (window.matchMedia("(orientation: portrait)").matches) {
+    if (/Mobi/.test(navigator.userAgent) && window.innerWidth < window.innerHeight) {
         canvasContainer.innerHTML =  /*html*/`
         <div class="startScreen">
             <span>Please switch to Landscape Mode and reload</span>
@@ -27,10 +27,10 @@ function init() {
     } else {
         canvasContainer.innerHTML = /*html*/`
         <div id="startScreen" class="startScreen">
-       <div class="introText">Dodge enemys like &nbsp; &nbsp;  <img class="introImg" src="img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png" >&nbsp;and  &nbsp; <img class="introImg" src="img/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png"></div>
-       <div class="introText"> Collect&nbsp;  <img class="introImg" src="img/4. Marcadores/green/100_ copia 5.png">&nbsp; to Shoot bubbles on Boss &nbsp;   <img class="introImg" src="img/2.Enemy/3 Final Enemy/1.Introduce/10.png"></div>
-       <div class="introText"> Use<img class="gameInstructions" src="img/6.Botones/Key/arrow keys.png" > to Move</div>
-       <div class="introText">Use &nbsp; <img class="gameInstructions" src="img/6.Botones/Key/Space Bar key.png"> &nbsp; to Shoot</div>
+       <div class="introText">Collect Poison&nbsp; <img class="introImg" src="img/4. Marcadores/green/100_ copia 5.png"> </div>
+       <div class="introText">Shoot or dodge enemies &nbsp;   <img class="introImg" src="img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png" >&nbsp;  <img class="introImg" src="img/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png"></div>
+       <div class="introText"> Beat the Endboss <img class="introEndbossImg" src="img/2.Enemy/3 Final Enemy/1.Introduce/10.png"></div>
+       
        <div onclick="startGame()" class="startGame"><button class="startGameBtn">Start Game</button></div>
    </div>
    `}

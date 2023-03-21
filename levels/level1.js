@@ -56,11 +56,6 @@ function initLevel() {
             new Poison(),
             new Poison(),
             new Poison(),
-            new Poison(),
-            new Poison(),
-            new Poison(),
-            new Poison(),
-            new Poison(),
         ],
 
         [

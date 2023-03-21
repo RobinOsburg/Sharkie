@@ -12,13 +12,14 @@ class ThrowableObject extends MovableObject {
 
     attack() {
         this.speedX = 30;
-        if (!world.character.otherDirect) {
+        if (!world.character.otherDirection) {
+            console.log('shoot right');
             this.attackRight();
-        } else{
+        } else if (world.character.otherDirection){
+            console.log('shoot left')
             this.attackLeft();  
         }
     };
-
 
 
     attackLeft(){

@@ -18,6 +18,7 @@ h1 {
     font-weight: bolder;
     text-align: center;
     display: inline;
+    margin-top: 5px;
 }
 
 canvas {
@@ -33,6 +34,12 @@ canvas {
     font-weight: bolder;
     text-align: center;
     display: inline;
+}
+
+.wideScreenInterface{
+    display: flex;
+    gap: 50px;
+    margin-top: 36px;
 }
 
 .Instructions {
@@ -51,7 +58,7 @@ canvas {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 100px;
+    gap: 70px;
 }
 
 #fullscreen img {
@@ -92,11 +99,12 @@ canvas {
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
+    margin-bottom: 50px;
 }
 
 
 .winImg img {
-    height: 50vh;
+    height: 40vh;
     width: 40vw;
 }
 
@@ -107,7 +115,7 @@ canvas {
     gap: 20px;
     position: absolute;
     top: 2vh;
-    left: 89vw;
+    left: 86vw;
     cursor: pointer;
 }
 
@@ -128,9 +136,15 @@ canvas {
 
 
 .introImg {
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 65px;
     object-fit: contain;
+}
+
+.introEndbossImg{
+    height: 150px;
+    margin-bottom: 40px;
+    margin-left: 10px;
 }
 
 
@@ -139,15 +153,31 @@ canvas {
     color: white;
     margin: 10px;
     height: 100px;
+    width: 310px;
     display: flex;
     align-items: center;
 }
 
 
-.gameInstructions {
-    height: 50px;
+.gameInstructionArrows {
+    height: 80px;
     width: 150px;
     object-fit: contain;
+}
+
+.gameInstructionSpace {
+    height: 50px;
+    width: 240px;
+    object-fit: contain;
+}
+
+.instuctionText{
+    font-size: xx-large;
+    color: white;
+    margin: 10px;
+    height: 100px;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -265,6 +295,23 @@ canvas {
         padding: 10px;
         width: 155px;
     }
+
+    .gameInstructionArrows {
+        height: 50px;
+        width: 150px;
+       
+    }
+    
+    .gameInstructionSpace {
+        height: 50px;
+        width: 180px;
+      
+    }
+    
+    .instuctionText{
+        font-size: x-large;
+      
+    }
 }
 
 
@@ -273,13 +320,18 @@ canvas {
         width: 100%;
     }
 
+   
+
     .startScreen {
         width: 100%;
+        flex-direction: column;
     }
 }
 
 @media only screen and (max-height:670px) {
-
+    .wideScreenInterface{
+        display: none;
+    }
 
     canvas {
         height: 100vh;
@@ -316,7 +368,7 @@ canvas {
     .btnUpDown {
         position: absolute;
         top: 84vh;
-        left: 84vw;
+        left: 86vw;
     }
 
     #up {
@@ -334,7 +386,7 @@ canvas {
     .btnSpace {
         position: absolute;
         top: 68vh;
-        left: 84vw;
+        left: 87vw;
     }
 
     #space {
@@ -361,7 +413,18 @@ canvas {
 
 
 
-@media (max-width:730px) {
+@media (max-width:740px) {
+    .introImg{
+        height: 50px;
+        width: 50px;
+    }
+
+    .wideScreenInterface{
+        flex-direction: column;
+        gap: 0px;
+        align-items: center;
+        margin-top: 5px;
+    }
 
     .HUD {
         width: 600px;
@@ -409,18 +472,18 @@ canvas {
     .btnUpDown {
         position: absolute;
         top: 82vh;
-        left: 74vw;
+        left: 71vw;
     }
 
     .btnLeftRight {
         position: absolute;
         top: 82vh;
-        left: 10vw;
+        left: 14vw;
         gap: unset;
     }
 
     .iconPosition {
-        left: 79vw;
+        left: 76vw;
     }
 
     .iconPosition img {

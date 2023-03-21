@@ -7,7 +7,6 @@ class World {
     keyboard;
     camera_x = 0;
     statusBar = new StatusBar();
-    // coinBar = new CoinBar();
     poisonBar = new PoisonBar();
     endbossBar = new Endbossbar();
     throwableObjects = [];
@@ -21,8 +20,7 @@ class World {
         this.draw();
         this.setWorld();
         this.swim();
-        // this.checkThrowObjects();
-        // this.checkCoinCollisions();
+        
         this.checkPoisonCollisions();
         this.checkBubbleCollisions();
         this.checkBossCollisions();
@@ -40,7 +38,7 @@ class World {
     swim() {
         setInterval(() => {
             this.checkCollisions();
-            // this.checkCoinCollisions();
+            
             this.checkPoisonCollisions();
             this.checkBubbleCollisions();
             this.bubbleAttack();
@@ -52,8 +50,17 @@ class World {
 
 
     bubbleAttack() {
-        if (this.keyboard.space && this.character.poisonEnergy >= 10) {
+        if (this.keyboard.space && this.character.poisonEnergy >= 10 && !this.character.otherDirection) {
+            console.log('character looks right')
             let bubble = new ThrowableObject(this.character.x + 150, this.character.y + 100);
+            this.throwableObjects.push(bubble);
+            this.character.cashPoison();
+            this.poisonBar.setPercantage(this.character.poisonEnergy);
+            bubble_sound.play();
+        }
+       else if (this.keyboard.space && this.character.poisonEnergy >= 10 && this.character.otherDirection) {
+        console.log('character looks left')
+            let bubble = new ThrowableObject(this.character.x - 1, this.character.y + 100);
             this.throwableObjects.push(bubble);
             this.character.cashPoison();
             this.poisonBar.setPercantage(this.character.poisonEnergy);
@@ -120,17 +127,7 @@ class World {
     };
 
 
-    // checkCoinCollisions() {
-    //     this.level.coins.forEach((coin, index) => {
-    //         if (this.character.isColliding(coin)) {
-    //             this.character.collectCoin();
-    //             this.level.coins.splice(index, 1);
-    //             this.coinBar.setPercantage(this.character.coinEnergy);
-    //             coin_sound.volume = 0.2;
-    //             coin_sound.play()
-    //         }
-    //     });
-    // };
+   
 
 
     checkPoisonCollisions() {
@@ -201,7 +198,7 @@ class World {
 
     allObjects() {
         this.addObjectsToMap(this.level.clouds);
-        // this.addObjectsToMap(this.level.coins);
+        
         this.addObjectsToMap(this.level.poison);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);

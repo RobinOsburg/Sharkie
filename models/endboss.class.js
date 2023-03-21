@@ -76,10 +76,9 @@ class Endboss extends MovableObject {
         this.startAnimate();
         this.swimAnimate();
         this.attack();
-        // this.reverse();
         this.checkBossHit();
         this.checkDeath();
-        // this.leavBossZone();
+        
     };
 
 
@@ -95,7 +94,6 @@ class Endboss extends MovableObject {
             }
             if (this.imgCounter == 10) {
                 this.hadFirstContact = true;
-                console.log('startAnimateWorks', this.hadFirstContact)
                 clearInterval(i);
             }
         }, 150);
@@ -103,7 +101,6 @@ class Endboss extends MovableObject {
 
 
     attack() {
-        console.log('attackWorks')
         setInterval(() => {
             if (this.hadFirstContact == true) {
                 this.moveLeft();
